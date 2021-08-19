@@ -33,3 +33,4 @@ for i in range(sample_size):
         points_inside_circle += 1
 
 print(compute_pi(points_inside_circle,points_inside_square))
+plt.show()
