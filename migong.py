@@ -23,5 +23,33 @@ plt.text(2.5,0.3,'GOAL',size=14, ha='center')
 
 ax.set_xlim(0,3)
 ax.set_ylim(0,3)
+plt.tick_params(axis='both',which='both',bottom='off',top='off',labelbottom='off',
+right='off',left='off',labelleft='off')
 
+
+line, = ax.plot([0.5],[2.5],marker='o',color='g',markersize=60)
 plt.show()
+
+theta_0 = np.array([
+    [np.nan,1,1,np.nan], #S0
+    [np.nan,1,np.nan,1], #S1
+    [np.nan,np.nan,1,1], #S2
+    [1,1,1,np.nan], #S3
+    [np.nan,np.nan,1,1], #S4
+    [1,np.nan,np.nan,np.nan], #S5
+    [1,np.nan,np.nan,np.nan], #S6
+    [1,1,np.nan,np.nan], #S7
+])
+
+
+def simple_convert_into_pi_from_theta(theta):
+    # 简单计算百分比
+    [m,n]=theta.shape
+    pi = np.zeros((m,n))
+    for i in range(0,m):
+        pi[i,:]=theta[i,:]/np.nansum(theta[i,:])
+
+    pi = np.nan_to_num(pi)
+
+    return pi
+
